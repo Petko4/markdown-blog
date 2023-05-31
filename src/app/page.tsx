@@ -1,95 +1,76 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
+import Link from "next/link";
+import Date from "@/components/Date/Date";
+import Article from "@/components/Article";
 
+const data = [
+  {
+    id: 1,
+    title: "Selection sort",
+    path: "algorithms/sorting algorithms",
+    publishedDate: "2020-01-02",
+    description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris tincidunt 
+    sem sed arcu. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus 
+    libero, eget facilisis enim ipsum id lacus. Phasellus et lorem id felis nonummy 
+    placerat. Sed ac dolor sit amet purus malesuada congue. Integer tempor. Class 
+    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+     Maecenas lorem. Aenean placerat. Mauris suscipit, ligula sit amet pharetra semper, nibh 
+     ante cursus purus, vel sagittis velit mauris vel metus. Fusce consectetuer 
+     risus a nunc. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.`,
+  },
+  {
+    id: 2,
+    title: "Insert sort",
+    path: "algorithms/sorting algorithms",
+    publishedDate: "2020-01-02",
+    description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris tincidunt 
+    sem sed arcu. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus 
+    libero, eget facilisis enim ipsum id lacus. Phasellus et lorem id felis nonummy 
+    placerat. Sed ac dolor sit amet purus malesuada congue. Integer tempor. Class 
+    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+     Maecenas lorem. Aenean placerat. Mauris suscipit, ligula sit amet pharetra semper, nibh 
+     ante cursus purus, vel sagittis velit mauris vel metus. Fusce consectetuer 
+     risus a nunc. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.`,
+  },
+  {
+    id: 3,
+    title: "Bubble sort",
+    path: "algorithms/sorting algorithms",
+    publishedDate: "2020-01-02",
+    description: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris tincidunt 
+    sem sed arcu. Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus 
+    libero, eget facilisis enim ipsum id lacus. Phasellus et lorem id felis nonummy 
+    placerat. Sed ac dolor sit amet purus malesuada congue. Integer tempor. Class 
+    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+     Maecenas lorem. Aenean placerat. Mauris suscipit, ligula sit amet pharetra semper, nibh 
+     ante cursus purus, vel sagittis velit mauris vel metus. Fusce consectetuer 
+     risus a nunc. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.`,
+  },
+];
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <>
+      {data.map(
+        (article) => (
+          <Article key={article.id} {...article} />
+        )
+        // const areas = article.path.split("/");
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+        // return (
+        //   <article key={article.id}>
+        //     <h2>{article.title}</h2>
+        //     {areas.map((area) => (
+        //       <Link key={area} href="/">
+        //         {area}
+        //       </Link>
+        //     ))}
+        //     <Date>{article.publishedDate}</Date>
+        //     <p>{article.description}</p>
+        //     <Link href="/">read article</Link>
+        //   </article>
+        // );
+      )}
+    </>
+  );
 }

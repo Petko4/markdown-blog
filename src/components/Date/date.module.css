@@ -1,0 +1,6 @@
+.date {
+  color: rgba(0, 0, 0, 0.35);
+  font-family: var(--font-eb-garamond);
+  font-weight: 400;
+  font-size: 16px;
+}

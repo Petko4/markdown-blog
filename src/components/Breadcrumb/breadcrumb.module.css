@@ -1,0 +1,9 @@
+.breadcrumb__list {
+  padding-left: 0;
+  padding-top: 0;
+}
+
+.breadcrumb__list-item {
+  list-style: none;
+  display: inline;
+}
