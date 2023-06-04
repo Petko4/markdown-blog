@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Breadcrumb, { BreadcrumbLink } from "./Breadcrumb/Breadcrumb";
 import Date from "./Date/Date";
+import { parsePathToBreadCrumbLinks } from "@/lib/utils";
 
 interface ArticleProps {
   id: number;
@@ -10,17 +11,6 @@ interface ArticleProps {
   description: string;
 }
 
-function createBreadcrumbLinks(path: string): BreadcrumbLink[] {
-  const pathSeparated = path.split("/");
-  return pathSeparated.map((path, index, arr) => {
-    const url = "/" + arr.slice(0, index + 1).join("/");
-    return {
-      name: path,
-      url,
-    };
-  });
-}
-
 export default function Article({
   id,
   title,
@@ -28,7 +18,7 @@ export default function Article({
   publishedDate,
   description,
 }: ArticleProps) {
-  const breadCrumbLinks = createBreadcrumbLinks(path);
+  const breadCrumbLinks = parsePathToBreadCrumbLinks(path);
 
   return (
     <article key={id}>
